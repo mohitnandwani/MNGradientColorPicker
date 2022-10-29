@@ -34,7 +34,7 @@ class ColorGridPicker: UIView, UICollectionViewDelegate {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, MNHexColor>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, MNHexColor>
     
-    fileprivate var hexColors = MNHexColor.colors
+    var hexColors = MNHexColor.colors
     
     lazy var gridCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout())

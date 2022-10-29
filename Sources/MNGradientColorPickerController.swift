@@ -283,6 +283,8 @@ public class MNGradientColorPickerController: UIViewController {
             hex1Button.color = UIColor(hex: "#"+hex1)
             hex2TextField.text = selectedColors.last?.hexString
             hex2Button.color = UIColor(hex: "#"+hex2)
+            
+            colorPickerView.setSelectedColor(with: selectedColors.first)
         }
     }
     

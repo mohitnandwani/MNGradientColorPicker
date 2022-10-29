@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MNGradientColorPicker_UIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ELl-Vf-IZ2">
+                                <rect key="frame" x="46.666666666666657" y="276" width="300" height="300"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jsp-5m-Eny">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="uOg-47-UUb"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MNGradientColorPicker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bz-zI-P3z">
+                                        <rect key="frame" x="0.0" y="18" width="300" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mz7-gr-jBh">
+                                        <rect key="frame" x="0.0" y="44.333333333333314" width="300" height="190"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeT-gk-PzW" customClass="SelectedColorPreview" customModule="MNGradientColorPicker_UIKit" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="24" width="252" height="142"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="KeT-gk-PzW" firstAttribute="top" secondItem="Mz7-gr-jBh" secondAttribute="top" constant="24" id="3yD-yV-EBh"/>
+                                            <constraint firstAttribute="trailing" secondItem="KeT-gk-PzW" secondAttribute="trailing" constant="24" id="bJ8-WH-mvt"/>
+                                            <constraint firstItem="KeT-gk-PzW" firstAttribute="leading" secondItem="Mz7-gr-jBh" secondAttribute="leading" constant="24" id="cOg-Pm-beh"/>
+                                            <constraint firstAttribute="height" constant="190" id="eOD-yC-5gT"/>
+                                            <constraint firstAttribute="bottom" secondItem="KeT-gk-PzW" secondAttribute="bottom" constant="24" id="n8I-zf-UxZ"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zh5-f6-Uo4">
+                                        <rect key="frame" x="0.0" y="240.33333333333334" width="300" height="41.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Show Gradient Color Picker"/>
+                                        <connections>
+                                            <action selector="didTapGradientColorPickerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UNc-EV-Q33"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nqn-o0-bLU">
+                                        <rect key="frame" x="0.0" y="288" width="300" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="z7T-1l-9oy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="27W-ea-KRJ"/>
+                                    <constraint firstAttribute="height" constant="300" id="p2Y-a5-PrN"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ELl-Vf-IZ2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Et3-92-RAO"/>
+                            <constraint firstItem="ELl-Vf-IZ2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s4f-4y-d13"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gradientColorPickerButton" destination="Zh5-f6-Uo4" id="lZv-nY-dt4"/>
+                        <outlet property="selectedColorPreview" destination="KeT-gk-PzW" id="YA8-MH-xwP"/>
+                        <outlet property="stackView" destination="ELl-Vf-IZ2" id="PEG-LD-EP4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

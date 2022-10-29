@@ -36,29 +36,28 @@ import MNGradientColorPicker
 
 func presentGradientColorPicker() {
     let gradientColorPickerController = MNGradientColorPickerController()
-    gradientColorPickerController.delegate = self // set delegation to get the selected colors
+        gradientColorPickerController.selectedColors = // use this to preset selected colors
+    gradientColorPickerController.delegate = self // set delegate to get the selected colors
     let navGradientColorPickerController = UINavigationController(rootViewController: gradientColorPickerController)
     self.present(gradientColorPickerController, animated: true)
 }
 
 // Delegation Method to get selected colors
 extension ViewController: MNGradientColorPickerControllerDelegate {
-    func() {
-        // get the `colors` value
+    func gradientColorPickerViewController(_ controller: MNGradientColorPickerController, didSelect colors: [UIColor]) {
+        guard let layer = selectedColorPreview.layer as? CAGradientLayer
+        else { return }
+        let cgColors = colors.map { $0.cgColor }
+        layer.colors = cgColors
+    }
+    
+    func gradientColorPickerViewControllerDidFinish(_ controller: MNGradientColorPickerController) {
+        NSLog("Gradient Color Picker Dismissed")
     }
 }
 ```
 
-You can also view or download UIKit example for demo purpose.
-
-### SwiftUI
-
-```swift
-import SwiftUI
-import MNGradientColorPicker
-```
-
-You can also view or download SwiftUI example for demo purpose.
+You can also view or download UIKit example for demo purposes.
 
 ## Credits
 

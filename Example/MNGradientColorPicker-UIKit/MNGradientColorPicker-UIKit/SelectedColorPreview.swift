@@ -1,5 +1,5 @@
 //
-//  SelectedColorPreviewView.swift
+//  SelectedColorPreview.swift
 //  MNGradientColorPicker-UIKit
 //
 //  Created by Mohit Nandwani on 29/10/22.

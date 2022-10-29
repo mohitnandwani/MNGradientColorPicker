@@ -299,7 +299,6 @@ public class MNGradientColorPickerController: UIViewController {
                 colorPickerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 12),
                 colorPickerView.trailingAnchor.constraint(equalTo: mainView.centerXAnchor, constant: -6),
                 colorPickerView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -16),
-//                colorPickerView.heightAnchor.constraint(equalToConstant: preferredContentSizeHeight == 0 ? view.bounds.height / 2.72 : preferredContentSizeHeight / 2),
                 
                 editorView.leadingAnchor.constraint(equalTo: mainView.centerXAnchor, constant: 6),
                 editorView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),

@@ -24,7 +24,7 @@
 import UIKit
 
 protocol ColorSpectrumPickerDelegate: AnyObject {
-    func selectColor(with color: UIColor?)
+    func selectColor(with color: UIColor)
 }
 
 class ColorSpectrumPicker: UIView, UIGestureRecognizerDelegate {

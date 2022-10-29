@@ -24,7 +24,7 @@
 import UIKit
 
 protocol ColorSliderPickerDelegate: AnyObject {
-    func selectColor(with color: UIColor?)
+    func selectColor(with color: UIColor)
 }
 
 class ColorSliderPicker: UIView {

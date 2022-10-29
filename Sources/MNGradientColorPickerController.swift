@@ -23,26 +23,19 @@
 
 import UIKit
 
-protocol MNGradientColorPickerControllerDelegate: AnyObject {
-    func colorChanged(_ color: UIColor?, value: String)
+@objc
+public protocol MNGradientColorPickerControllerDelegate: AnyObject {
+    /// Informs the delegate when a person selects a color.
+    func gradientColorPickerViewController(_ controller: MNGradientColorPickerController, didSelect colors: [UIColor])
+    @objc optional func gradientColorPickerViewControllerDidFinish(_ controller: MNGradientColorPickerController)
 }
 
-class MNGradientColorPickerController: UIViewController {
+public class MNGradientColorPickerController: UIViewController {
     
-    weak var delegate: MNGradientColorPickerControllerDelegate?
-    var isGradientPicker = false
-    var color1: UIColor = .red
-    var color2: UIColor = .red
+    public weak var delegate: MNGradientColorPickerControllerDelegate?
     
-    init(
-        color1: UIColor? = nil,
-        color2: UIColor? = nil,
-        isGradientPicker: Bool = false
-    ) {
+    public init() {
         super.init(nibName: nil, bundle: nil)
-        self.color1 = color1 ?? .red
-        self.color2 = color2 ?? color1 ?? .red
-        self.isGradientPicker = isGradientPicker
     }
     
     required init?(coder: NSCoder) {
@@ -51,7 +44,7 @@ class MNGradientColorPickerController: UIViewController {
     
     // MARK: - Properties
     
-//    fileprivate var color: Colors?
+    public var selectedColors: [UIColor]? = [.red, .red]
     
     fileprivate var scrollView: UIScrollView!
     fileprivate var mainView: UIView!
@@ -104,7 +97,7 @@ class MNGradientColorPickerController: UIViewController {
     
     fileprivate func setupNavigationBar() {
         navigationItem.title = "Color Picker"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(handleCancel))
     }
     
     fileprivate func setupViews() {
@@ -115,6 +108,7 @@ class MNGradientColorPickerController: UIViewController {
         setupSegmentedControl()
         setupColorPickerView()
         setupEditorView()
+        setupSelectedColors()
         setupConstraints()
     }
     
@@ -143,8 +137,8 @@ class MNGradientColorPickerController: UIViewController {
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            mainView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            mainView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            mainView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor),
+            mainView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor),
             mainView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             mainViewHeightAnchorConstraint
         ])
@@ -159,8 +153,8 @@ class MNGradientColorPickerController: UIViewController {
         
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 4),
-            segmentedControl.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor),
-            segmentedControl.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            segmentedControl.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor, constant: -12),
         ])
     }
     
@@ -169,19 +163,21 @@ class MNGradientColorPickerController: UIViewController {
         colorPickerView.delegate = self
         colorPickerView.clipsToBounds = true
         colorPickerView.layer.cornerRadius = 8
+        colorPickerView.translatesAutoresizingMaskIntoConstraints = false
         
         mainView.addSubview(colorPickerView)
     }
     
     fileprivate func setupEditorView() {
         editorView = UIView()
+        editorView.translatesAutoresizingMaskIntoConstraints = false
         mainView.addSubview(editorView)
         
-        let subColorHex1 = color1.hexString
-        let subColorHex2 = color2.hexString
+//        let subColorHex1 = color1.hexString
+//        let subColorHex2 = color2.hexString
         
         previewView = ColorPreviewView()
-        previewView.backgroundLayer(with: [color1.cgColor, color2.cgColor])
+//        previewView.backgroundLayer(with: [color1.cgColor, color2.cgColor])
         previewView.layer.cornerRadius = 12
         previewView.translatesAutoresizingMaskIntoConstraints = false
         editorView.addSubview(previewView)
@@ -204,9 +200,9 @@ class MNGradientColorPickerController: UIViewController {
         }
         
         hex1TextField = UITextField()
-        hex1TextField.text = subColorHex1
+//        hex1TextField.text = subColorHex1
         hex2TextField = UITextField()
-        hex2TextField.text = subColorHex2
+//        hex2TextField.text = subColorHex2
         [hex1TextField, hex2TextField].forEach {
             $0?.delegate = self
             $0?.borderStyle = .roundedRect
@@ -239,10 +235,10 @@ class MNGradientColorPickerController: UIViewController {
         
         hex1Button = ColorPickerButton(type: .system)
         hex1Button.isSelected = isHex1Active
-        hex1Button.color = UIColor(hex: "#"+subColorHex1)
+//        hex1Button.color = UIColor(hex: "#"+subColorHex1)
         
         hex2Button = ColorPickerButton(type: .system)
-        hex2Button.color = UIColor(hex: "#"+subColorHex2)
+//        hex2Button.color = UIColor(hex: "#"+subColorHex2)
         
         [hex1Button, hex2Button].forEach {
             $0?.addTarget(self, action: #selector(handleHexButton(_:)), for: .touchUpInside)
@@ -276,16 +272,32 @@ class MNGradientColorPickerController: UIViewController {
         ])
     }
     
+    fileprivate func setupSelectedColors() {
+        guard let selectedColors = selectedColors else { return }
+        let cgColors = selectedColors.map { $0.cgColor }
+        previewView.backgroundLayer(with: cgColors)
+        
+        if let hex1 = selectedColors.first?.hexString,
+           let hex2 = selectedColors.last?.hexString {
+            hex1TextField.text = selectedColors.first?.hexString
+            hex1Button.color = UIColor(hex: "#"+hex1)
+            hex2TextField.text = selectedColors.last?.hexString
+            hex2Button.color = UIColor(hex: "#"+hex2)
+        }
+    }
+    
     fileprivate func setupConstraints() {
         colorPickerView.removeAllConstraints()
         editorView.removeAllConstraints()
+        colorPickerView.colorGridView.gridCollectionView.collectionViewLayout.invalidateLayout()
         
         if traitCollection.verticalSizeClass == .compact {
             NSLayoutConstraint.activate([
                 colorPickerView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
                 colorPickerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 12),
                 colorPickerView.trailingAnchor.constraint(equalTo: mainView.centerXAnchor, constant: -6),
-                colorPickerView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor),
+                colorPickerView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -16),
+//                colorPickerView.heightAnchor.constraint(equalToConstant: preferredContentSizeHeight == 0 ? view.bounds.height / 2.72 : preferredContentSizeHeight / 2),
                 
                 editorView.leadingAnchor.constraint(equalTo: mainView.centerXAnchor, constant: 6),
                 editorView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
@@ -293,15 +305,16 @@ class MNGradientColorPickerController: UIViewController {
                 editorView.heightAnchor.constraint(equalToConstant: 150)
             ])
         } else {
-            let preferredContentSizeHeight = navigationController?.preferredContentSize.height ?? 0
+            let preferredContentSizeHeight = navigationController?.preferredContentSize.height ?? preferredContentSize.height
+            
             NSLayoutConstraint.activate([
-                colorPickerView.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor),
+                colorPickerView.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor, constant: 12),
                 colorPickerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 12),
-                colorPickerView.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor),
+                colorPickerView.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor, constant: -12),
                 colorPickerView.heightAnchor.constraint(equalToConstant: preferredContentSizeHeight == 0 ? view.bounds.height / 2.72 : preferredContentSizeHeight / 2),
                 
-                editorView.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor),
-                editorView.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor),
+                editorView.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor, constant: 12),
+                editorView.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor, constant: -12),
                 editorView.topAnchor.constraint(equalTo: colorPickerView.bottomAnchor, constant: 16),
                 editorView.heightAnchor.constraint(equalToConstant: 150)
             ])
@@ -385,7 +398,10 @@ class MNGradientColorPickerController: UIViewController {
     
     @objc
     fileprivate func handleCancel() {
-        dismiss(animated: true)
+        dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            (self.delegate?.gradientColorPickerViewControllerDidFinish?(self) ?? nil)
+        }
     }
     
     deinit {
@@ -408,15 +424,19 @@ extension MNGradientColorPickerController: UITextFieldDelegate {
 
 extension MNGradientColorPickerController: ColorPickerViewDelegate {
     
-    public func colorChanged(color: UIColor?, value: String) {
+    public func colorChanged(color: UIColor) {
         if isHex1Active {
             hex1Button.color = color
-            hex1TextField.text = color?.hexString
+            hex1TextField.text = color.hexString
         } else {
             hex2Button.color = color
-            hex2TextField.text = color?.hexString
+            hex2TextField.text = color.hexString
         }
-        previewView.backgroundLayer(with: [hex1Button.color!.cgColor, hex2Button.color!.cgColor])
+        guard let hex1Color = hex1Button.color,
+              let hex2Color = hex2Button.color
+        else { return }
+        previewView.backgroundLayer(with: [hex1Color.cgColor, hex2Color.cgColor])
+        delegate?.gradientColorPickerViewController(self, didSelect: [hex1Color, hex2Color])
     }
     
 }

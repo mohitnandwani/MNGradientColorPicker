@@ -23,20 +23,19 @@
 
 import UIKit
 
-public protocol ColorPickerViewDelegate: AnyObject {
-    func colorChanged(color: UIColor?, value: String)
+protocol ColorPickerViewDelegate: AnyObject {
+    func colorChanged(color: UIColor)
 }
 
-public class ColorPickerView: UIView {
+class ColorPickerView: UIView {
     
-    public weak var delegate: ColorPickerViewDelegate?
+    weak var delegate: ColorPickerViewDelegate?
     
     lazy var colorGridView: ColorGridPicker = {
         let gridView = ColorGridPicker()
         gridView.alpha = 1
         gridView.delegate = self
         gridView.clipsToBounds = true
-        gridView.layer.cornerRadius = 8
         gridView.translatesAutoresizingMaskIntoConstraints = false
         return gridView
     }()
@@ -71,12 +70,14 @@ public class ColorPickerView: UIView {
         addSubview(colorSpectrumView)
         addSubview(colorSlidersView)
         
-        NSLayoutConstraint.activate([
-            colorGridView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            colorGridView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            colorGridView.topAnchor.constraint(equalTo: topAnchor),
-            colorGridView.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
+        [colorGridView, colorSpectrumView, colorSlidersView].forEach { view in
+            NSLayoutConstraint.activate([
+                view.leadingAnchor.constraint(equalTo: leadingAnchor),
+                view.trailingAnchor.constraint(equalTo: trailingAnchor),
+                view.topAnchor.constraint(equalTo: topAnchor),
+                view.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ])
+        }
     }
     
     func setSelectedColor(with color: UIColor?) {
@@ -93,9 +94,9 @@ public class ColorPickerView: UIView {
 
 extension ColorPickerView: ColorGridPickerDelegate, ColorSpectrumPickerDelegate, ColorSliderPickerDelegate {
     
-    func selectColor(with color: UIColor?) {
+    func selectColor(with color: UIColor) {
         setSelectedColor(with: color)
-        delegate?.colorChanged(color: color, value: "")
+        delegate?.colorChanged(color: color)
     }
     
 }

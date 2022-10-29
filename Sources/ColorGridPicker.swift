@@ -24,7 +24,7 @@
 import UIKit
 
 protocol ColorGridPickerDelegate: AnyObject {
-    func selectColor(with color: UIColor?)
+    func selectColor(with color: UIColor)
 }
 
 class ColorGridPicker: UIView, UICollectionViewDelegate {
@@ -111,7 +111,8 @@ class ColorGridPicker: UIView, UICollectionViewDelegate {
             if let indexPath = gridCollectionView.indexPathForItem(at: location) {
                 selectedIndexPath = indexPath
                 let colorHex = "#"+hexColors[indexPath.item].hex
-                delegate?.selectColor(with: UIColor(hex: colorHex))
+                guard let color = UIColor(hex: colorHex) else { return }
+                delegate?.selectColor(with: color)
             }
         }
     }
@@ -133,7 +134,8 @@ class ColorGridPicker: UIView, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let hexColor = UIColor(hex: "#"+hexColors[indexPath.item].hex)
+        guard let hexColor = UIColor(hex: "#"+hexColors[indexPath.item].hex)
+        else { return }
         delegate?.selectColor(with: hexColor)
         selectedIndexPath = indexPath
     }

@@ -61,6 +61,10 @@ extension ViewController: MNGradientColorPickerControllerDelegate {
 
 You can also view or download UIKit example for demo purposes.
 
+## Live Demo
+
+My app [Subtrack](https://apps.apple.com/app/id1519946553) (A Subscription Tracker) is using MNGradientColorPicker for color customisation. You can download it and try it on your multiple devices to see this magic.
+
 ## Credits
 
 - Mohit Nandwani ([@iMohitnandwani](https://twitter.com/iMohitNandwani))

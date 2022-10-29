@@ -36,7 +36,7 @@ import MNGradientColorPicker
 
 func presentGradientColorPicker() {
     let gradientColorPickerController = MNGradientColorPickerController()
-        gradientColorPickerController.selectedColors = // use this to preset selected colors
+    gradientColorPickerController.selectedColors = // use this to preset selected colors
     gradientColorPickerController.delegate = self // set delegate to get the selected colors
     let navGradientColorPickerController = UINavigationController(rootViewController: gradientColorPickerController)
     self.present(gradientColorPickerController, animated: true)
@@ -56,6 +56,8 @@ extension ViewController: MNGradientColorPickerControllerDelegate {
     }
 }
 ```
+
+> Note: Use `UINavigationController` to present Gradient Color Picker for better layout.
 
 You can also view or download UIKit example for demo purposes.
 

@@ -2,6 +2,10 @@
 
 MNGradientColorPicker is a color picker for iOS. It allows you to pick gradient colors for your views.
 
+![grid-view](https://user-images.githubusercontent.com/28500428/198872326-2cffc67b-6f48-496b-9e0d-fc31aa42df57.png)
+![spectrum-view](https://user-images.githubusercontent.com/28500428/198872340-1e8188fb-400a-446f-86de-27d04fc564bf.png)
+![sliders-view](https://user-images.githubusercontent.com/28500428/198872348-4350fe90-dc4b-4321-aa9d-c60d0b3a7045.png)
+
 ## Requirements
 
 - iOS 13.0 or later
@@ -63,7 +67,7 @@ You can also view or download UIKit example for demo purposes.
 
 ## Live Demo
 
-My app [Subtrack](https://apps.apple.com/app/id1519946553) (A Subscription Tracker) is using MNGradientColorPicker for color customisation. You can download it and try it on your multiple devices to see this magic.
+My app [Subtrack](https://apps.apple.com/app/id1519946553) (A Subscription Tracker) is using MNGradientColorPicker for color customisation. You can download it and try it on your multiple devices to check it out.
 
 ## Credits
 

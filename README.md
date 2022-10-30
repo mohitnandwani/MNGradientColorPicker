@@ -67,6 +67,10 @@ You can also view or download UIKit example for demo purposes.
 
 My app [Subtrack](https://apps.apple.com/app/id1519946553) (A Subscription Tracker) is using MNGradientColorPicker for color customisation. You can download it and try it on your multiple devices to check it out.
 
+<a href="https://apps.apple.com/app/id1519946553">
+  <img src="https://user-images.githubusercontent.com/28500428/198873207-f9dfb253-167f-43e1-9df6-83d5d459dce8.svg">
+</a>
+
 ## Credits
 
 - Mohit Nandwani ([@iMohitnandwani](https://twitter.com/iMohitNandwani))

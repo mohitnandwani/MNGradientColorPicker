@@ -89,8 +89,9 @@ class ColorSpectrumPicker: UIView, UIGestureRecognizerDelegate {
         
         DispatchQueue.main.async { [self] in
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {
-                let xPos = hue * self.bounds.width
-                print("xPos:", xPos, self.pickerOverlayView.center.x)
+                let xHuePos = hue * self.bounds.width
+                let xPos = xHuePos != self.pickerOverlayView.center.x ? self.pickerOverlayView.center.x : xHuePos
+                print("xPos:", xHuePos, self.pickerOverlayView.center.x)
                 let yPos = hue * self.bounds.height
                 self.pickerOverlayView.center = CGPoint(x: xPos, y: yPos)
             }

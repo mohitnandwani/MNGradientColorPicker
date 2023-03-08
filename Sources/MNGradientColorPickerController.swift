@@ -444,7 +444,6 @@ extension MNGradientColorPickerController: ColorPickerViewDelegate {
               let hex2Color = hex2Button.color
         else { return }
         previewView.backgroundLayer(with: [hex1Color.cgColor, hex2Color.cgColor])
-        colorPickerView.setSelectedColor(with: color)
         delegate?.gradientColorPickerViewController(self, didSelect: [hex1Color, hex2Color])
     }
     

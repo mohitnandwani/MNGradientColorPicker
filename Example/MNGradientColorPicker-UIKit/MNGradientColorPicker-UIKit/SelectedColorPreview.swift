@@ -4,7 +4,6 @@
 //
 //  Created by Mohit Nandwani on 29/10/22.
 //
-
 import UIKit
 
 class SelectedColorPreview: UIView {

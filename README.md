@@ -20,7 +20,7 @@ To integrate MNGradientColorPicker into your Xcode project using Swift Package M
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/mohitnandwani/MNGradientColorPicker.git", .upToNextMajor(from: "0.1"))
+    .package(url: "https://github.com/mohitnandwani/MNGradientColorPicker.git", .upToNextMajor(from: "0.2.0"))
 ]
 ```
 

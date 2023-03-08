@@ -14,7 +14,7 @@
 		51A85D15290D7AB90003D90D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A85D14290D7AB90003D90D /* Assets.xcassets */; };
 		51A85D18290D7AB90003D90D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A85D16290D7AB90003D90D /* LaunchScreen.storyboard */; };
 		51A85D21290D7E390003D90D /* MNGradientColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 51A85D20290D7E390003D90D /* MNGradientColorPicker */; };
-		51A85D23290D7F070003D90D /* SelectedColorPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A85D22290D7F070003D90D /* SelectedColorPreviewView.swift */; };
+		E4B1D5DE29B8AD0C009EAF58 /* SelectedColorPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B1D5DD29B8AD0C009EAF58 /* SelectedColorPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 		51A85D14290D7AB90003D90D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51A85D17290D7AB90003D90D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51A85D19290D7AB90003D90D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51A85D22290D7F070003D90D /* SelectedColorPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedColorPreviewView.swift; sourceTree = "<group>"; };
+		E4B1D5DD29B8AD0C009EAF58 /* SelectedColorPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedColorPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 			children = (
 				51A85D0B290D7AB80003D90D /* AppDelegate.swift */,
 				51A85D0D290D7AB80003D90D /* SceneDelegate.swift */,
-				51A85D22290D7F070003D90D /* SelectedColorPreviewView.swift */,
+				E4B1D5DD29B8AD0C009EAF58 /* SelectedColorPreviewView.swift */,
 				51A85D0F290D7AB80003D90D /* ViewController.swift */,
 				51A85D11290D7AB80003D90D /* Main.storyboard */,
 				51A85D14290D7AB90003D90D /* Assets.xcassets */,
@@ -151,7 +151,7 @@
 			files = (
 				51A85D10290D7AB80003D90D /* ViewController.swift in Sources */,
 				51A85D0C290D7AB80003D90D /* AppDelegate.swift in Sources */,
-				51A85D23290D7F070003D90D /* SelectedColorPreviewView.swift in Sources */,
+				E4B1D5DE29B8AD0C009EAF58 /* SelectedColorPreviewView.swift in Sources */,
 				51A85D0E290D7AB80003D90D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

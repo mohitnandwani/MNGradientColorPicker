@@ -400,9 +400,8 @@ public class MNGradientColorPickerController: UIViewController {
     
     @objc
     fileprivate func appEnteredForeground(_ notification: Notification) {
-        guard let color = isHex1Active ? hex1Button.color : hex2Button.color
-        else { return }
-        colorChanged(color: color)
+        let color = isHex1Active ? hex1Button.color : hex2Button.color
+        colorPickerView.setSelectedColor(with: color)
     }
     
     @objc

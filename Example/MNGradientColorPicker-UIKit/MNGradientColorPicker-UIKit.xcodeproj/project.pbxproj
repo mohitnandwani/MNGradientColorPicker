@@ -13,7 +13,7 @@
 		51A85D13290D7AB80003D90D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A85D11290D7AB80003D90D /* Main.storyboard */; };
 		51A85D15290D7AB90003D90D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A85D14290D7AB90003D90D /* Assets.xcassets */; };
 		51A85D18290D7AB90003D90D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A85D16290D7AB90003D90D /* LaunchScreen.storyboard */; };
-		51A85D21290D7E390003D90D /* MNGradientColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 51A85D20290D7E390003D90D /* MNGradientColorPicker */; };
+		E494FC1D29B8B0E40034F4BA /* MNGradientColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E494FC1C29B8B0E40034F4BA /* MNGradientColorPicker */; };
 		E4B1D5E029B8AE3E009EAF58 /* SelectedColorPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B1D5DF29B8AE3E009EAF58 /* SelectedColorPreview.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51A85D21290D7E390003D90D /* MNGradientColorPicker in Frameworks */,
+				E494FC1D29B8B0E40034F4BA /* MNGradientColorPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +46,7 @@
 			children = (
 				51A85D0A290D7AB80003D90D /* MNGradientColorPicker-UIKit */,
 				51A85D09290D7AB80003D90D /* Products */,
+				E4B1D5E129B8AFFB009EAF58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +73,13 @@
 			path = "MNGradientColorPicker-UIKit";
 			sourceTree = "<group>";
 		};
+		E4B1D5E129B8AFFB009EAF58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,7 +97,7 @@
 			);
 			name = "MNGradientColorPicker-UIKit";
 			packageProductDependencies = (
-				51A85D20290D7E390003D90D /* MNGradientColorPicker */,
+				E494FC1C29B8B0E40034F4BA /* MNGradientColorPicker */,
 			);
 			productName = "MNGradientColorPicker-UIKit";
 			productReference = 51A85D08290D7AB80003D90D /* MNGradientColorPicker-UIKit.app */;
@@ -120,7 +128,7 @@
 			);
 			mainGroup = 51A85CFF290D7AB80003D90D;
 			packageReferences = (
-				51A85D1F290D7E390003D90D /* XCRemoteSwiftPackageReference "MNGradientColorPicker" */,
+				E494FC1B29B8B0E40034F4BA /* XCRemoteSwiftPackageReference "MNGradientColorPicker" */,
 			);
 			productRefGroup = 51A85D09290D7AB80003D90D /* Products */;
 			projectDirPath = "";
@@ -228,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -282,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -376,7 +384,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		51A85D1F290D7E390003D90D /* XCRemoteSwiftPackageReference "MNGradientColorPicker" */ = {
+		E494FC1B29B8B0E40034F4BA /* XCRemoteSwiftPackageReference "MNGradientColorPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mohitnandwani/MNGradientColorPicker";
 			requirement = {
@@ -387,9 +395,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		51A85D20290D7E390003D90D /* MNGradientColorPicker */ = {
+		E494FC1C29B8B0E40034F4BA /* MNGradientColorPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 51A85D1F290D7E390003D90D /* XCRemoteSwiftPackageReference "MNGradientColorPicker" */;
+			package = E494FC1B29B8B0E40034F4BA /* XCRemoteSwiftPackageReference "MNGradientColorPicker" */;
 			productName = MNGradientColorPicker;
 		};
 /* End XCSwiftPackageProductDependency section */

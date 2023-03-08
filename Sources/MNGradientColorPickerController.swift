@@ -72,8 +72,9 @@ public class MNGradientColorPickerController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appEnteredForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         setupNavigationBar()
         setupViews()
@@ -334,13 +335,13 @@ public class MNGradientColorPickerController: UIViewController {
         hex1TextField.text = hex2TextField.text?.uppercased()
         hex2TextField.text = hex1Text
         previewView.backgroundLayer(with: [hex1Button.color!.cgColor, hex2Button.color!.cgColor])
-        #if targetEnvironment(macCatalyst)
-        if showingColorPicker {
-            CatalystAppManager.presentColorPicker(hex: isHex1Active ? hex1Button.color?.hexString ?? "" : hex2Button.color?.hexString ?? "")
-        }
-        #else
+//        #if targetEnvironment(macCatalyst)
+//        if showingColorPicker {
+//            CatalystAppManager.presentColorPicker(hex: isHex1Active ? hex1Button.color?.hexString ?? "" : hex2Button.color?.hexString ?? "")
+//        }
+//        #else
         colorPickerView.setSelectedColor(with: isHex1Active ? hex1Button.color : hex2Button.color)
-        #endif
+//        #endif
     }
     
     @objc
@@ -395,6 +396,13 @@ public class MNGradientColorPickerController: UIViewController {
         } else {
             scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
         }
+    }
+    
+    @objc
+    fileprivate func appEnteredForeground(_ notification: Notification) {
+        guard let color = isHex1Active ? hex1Button.color : hex2Button.color
+        else { return }
+        colorChanged(color: color)
     }
     
     @objc

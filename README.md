@@ -46,6 +46,8 @@ NavigationView {
 
 > Note: Use `NavigationView` to present Gradient Color Picker for better layout.
 
+You can also view or download SwiftUI example for demo purposes.
+
 ### UIKit
 
 ```swift

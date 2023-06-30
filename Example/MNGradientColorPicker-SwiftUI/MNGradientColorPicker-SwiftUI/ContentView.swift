@@ -10,13 +10,24 @@ import MNGradientColorPicker
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack(spacing: 24) {
+            Spacer()
+            Text("MNGradientColorPicker")
+                .foregroundColor(.primary)
+                .bold()
+            LinearGradient(gradient: Gradient(colors: [.red, .blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .cornerRadius(16)
+                .padding(.horizontal, 16)
+            Button {
+                print("show picker")
+            } label: {
+                Text("Show Gradient Color Picker")
+            }
+            Spacer()
         }
-        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(16)
+        .frame(width: 300, height: 300, alignment: .center)
     }
 }
 

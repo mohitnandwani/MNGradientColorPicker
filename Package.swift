@@ -35,11 +35,6 @@ let package = Package(
         .library(
             name: "MNGradientColorPicker",
             targets: ["MNGradientColorPicker"]),
-        .library(
-            name: "MNGradientColorPicker-Dynamic",
-            type: .dynamic,
-            targets: ["MNGradientColorPicker"]
-        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.

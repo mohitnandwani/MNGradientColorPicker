@@ -12,6 +12,7 @@
 		E49C70892A4F17C60028C806 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E49C70882A4F17C60028C806 /* Assets.xcassets */; };
 		E49C708C2A4F17C60028C806 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E49C708B2A4F17C60028C806 /* Preview Assets.xcassets */; };
 		E49C70942A4F17F40028C806 /* MNGradientColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E49C70932A4F17F40028C806 /* MNGradientColorPicker */; };
+		E49C70962A4F1D1A0028C806 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49C70952A4F1D1A0028C806 /* ColorPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		E49C70862A4F17C50028C806 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E49C70882A4F17C60028C806 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E49C708B2A4F17C60028C806 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E49C70952A4F1D1A0028C806 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				E49C70842A4F17C50028C806 /* MNGradientColorPicker_SwiftUIApp.swift */,
 				E49C70862A4F17C50028C806 /* ContentView.swift */,
+				E49C70952A4F1D1A0028C806 /* ColorPickerView.swift */,
 				E49C70882A4F17C60028C806 /* Assets.xcassets */,
 				E49C708A2A4F17C60028C806 /* Preview Content */,
 			);
@@ -147,6 +150,7 @@
 			files = (
 				E49C70872A4F17C50028C806 /* ContentView.swift in Sources */,
 				E49C70852A4F17C50028C806 /* MNGradientColorPicker_SwiftUIApp.swift in Sources */,
+				E49C70962A4F1D1A0028C806 /* ColorPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

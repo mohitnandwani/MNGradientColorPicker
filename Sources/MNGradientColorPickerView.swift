@@ -28,8 +28,8 @@ public struct MNGradientColorPickerView: UIViewControllerRepresentable {
     
     let mnGradientColorPickerController = MNGradientColorPickerController()
     
+    var selectedColors: [Color]?
     var onColorsSelection: ([Color]) -> Void
-    var onDismiss: (() -> Void)?
     
     public func makeUIViewController(context: Context) -> some UIViewController {
         return mnGradientColorPickerController
@@ -38,27 +38,23 @@ public struct MNGradientColorPickerView: UIViewControllerRepresentable {
     public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) { }
     
     public func makeCoordinator() -> MNGradientColorPickerCoordinator {
-        MNGradientColorPickerCoordinator(colorPickerController: mnGradientColorPickerController, onColorsSelection: onColorsSelection, onDismiss: onDismiss)
+        MNGradientColorPickerCoordinator(colorPickerController: mnGradientColorPickerController, selectedColors: selectedColors, onColorsSelection: onColorsSelection)
     }
     
-    public class MNGradientColorPickerCoordinator: NSObject, MNGradientColorPickerControllerDelegate {
+    public  class MNGradientColorPickerCoordinator: NSObject, MNGradientColorPickerControllerDelegate {
         
         var onColorsSelection: ([Color]) -> Void
         var onDismiss: (() -> Void)?
         
-        init(colorPickerController: MNGradientColorPickerController, onColorsSelection: @escaping ([Color]) -> Void, onDismiss: (() -> Void)?) {
+        public init(colorPickerController: MNGradientColorPickerController, selectedColors: [Color]?, onColorsSelection: @escaping ([Color]) -> Void) {
             self.onColorsSelection = onColorsSelection
-            self.onDismiss = onDismiss
+            colorPickerController.selectedColors = selectedColors?.map({ $0.uiColor() })
             super.init()
             colorPickerController.delegate = self
         }
         
         public func gradientColorPickerViewController(_ controller: MNGradientColorPickerController, didSelect colors: [UIColor]) {
             onColorsSelection(colors.map({ Color($0) }))
-        }
-        
-        public func gradientColorPickerViewControllerDidFinish(_ controller: MNGradientColorPickerController) {
-            onDismiss?()
         }
         
     }

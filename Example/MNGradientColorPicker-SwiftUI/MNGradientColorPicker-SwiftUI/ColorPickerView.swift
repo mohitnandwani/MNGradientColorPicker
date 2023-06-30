@@ -11,7 +11,7 @@ import MNGradientColorPicker
 struct ColorPickerView: View {
     var body: some View {
         NavigationView {
-//            MNGradientColorPickerView()
+//            MNGradientColorPickerView(onColorsSelection: <#T##([Color]) -> Void#>, onDismiss: <#T##(() -> Void)?#>)
         }
     }
 }

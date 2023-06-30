@@ -30,6 +30,22 @@ If you prefer not to use dependency managers, you can integrate MNGradientColorP
 
 ## Usage
 
+### SwiftUI
+
+```swift
+import SwiftUI
+import MNGradientColorPicker
+
+NavigationView {
+    // use `selectedColors` (optional value) to preset selected colors...
+    MNGradientColorPickerView(selectedColors: [.red, .green]) { colors in
+        // get selected colors here on new selection...
+    }
+}
+```
+
+> Note: Use `NavigationView` to present Gradient Color Picker for better layout.
+
 ### UIKit
 
 ```swift

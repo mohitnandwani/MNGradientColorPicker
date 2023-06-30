@@ -37,7 +37,7 @@ import SwiftUI
 import MNGradientColorPicker
 
 NavigationView {
-    // use `selectedColors` (optional value) to preset selected colors
+    // use `selectedColors` (optional value) to preset selected colors...
     MNGradientColorPickerView(selectedColors: [.red, .green]) { colors in
         // get selected colors here on new selection...
     }

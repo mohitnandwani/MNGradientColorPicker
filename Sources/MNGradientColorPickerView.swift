@@ -28,8 +28,8 @@ public struct MNGradientColorPickerView: UIViewControllerRepresentable {
     
     let mnGradientColorPickerController = MNGradientColorPickerController()
     
-    var selectedColors: [Color]?
-    var onColorsSelection: ([Color]) -> Void
+    public var selectedColors: [Color]?
+    public var onColorsSelection: ([Color]) -> Void
     
     public func makeUIViewController(context: Context) -> some UIViewController {
         return mnGradientColorPickerController
@@ -41,10 +41,9 @@ public struct MNGradientColorPickerView: UIViewControllerRepresentable {
         MNGradientColorPickerCoordinator(colorPickerController: mnGradientColorPickerController, selectedColors: selectedColors, onColorsSelection: onColorsSelection)
     }
     
-    public  class MNGradientColorPickerCoordinator: NSObject, MNGradientColorPickerControllerDelegate {
+    public class MNGradientColorPickerCoordinator: NSObject, MNGradientColorPickerControllerDelegate {
         
         var onColorsSelection: ([Color]) -> Void
-        var onDismiss: (() -> Void)?
         
         public init(colorPickerController: MNGradientColorPickerController, selectedColors: [Color]?, onColorsSelection: @escaping ([Color]) -> Void) {
             self.onColorsSelection = onColorsSelection

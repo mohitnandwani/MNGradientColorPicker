@@ -9,18 +9,20 @@ import SwiftUI
 import MNGradientColorPicker
 
 struct ContentView: View {
+    
+    @State
+    private var selectedColors: [Color] = [.red, .blue]
+    
     var body: some View {
         VStack(spacing: 24) {
             Spacer()
             Text("MNGradientColorPicker")
                 .foregroundColor(.primary)
                 .bold()
-            LinearGradient(gradient: Gradient(colors: [.red, .blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: Gradient(colors: selectedColors), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .cornerRadius(16)
                 .padding(.horizontal, 16)
-            Button {
-                print("show picker")
-            } label: {
+            NavigationLink(destination: ColorPickerView()) {
                 Text("Show Gradient Color Picker")
             }
             Spacer()

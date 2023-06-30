@@ -9,9 +9,27 @@ import SwiftUI
 import MNGradientColorPicker
 
 struct ColorPickerView: View {
+    
+//    @Binding var selectedColors: [Color]?
+    
     var body: some View {
         NavigationView {
-//            MNGradientColorPickerView(onColorsSelection: <#T##([Color]) -> Void#>, onDismiss: <#T##(() -> Void)?#>)
+            MNGradientColorPickerView { colors in
+                //
+            }
+            .navigationTitle("Color Picker")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        print("dismiss")
+//                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
         }
     }
 }

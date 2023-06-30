@@ -10,20 +10,20 @@ import MNGradientColorPicker
 
 struct ColorPickerView: View {
     
-//    @Binding var selectedColors: [Color]?
+    @Binding var selectedColors: [Color]
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
-            MNGradientColorPickerView { colors in
-                //
+            MNGradientColorPickerView(selectedColors: selectedColors.isEmpty ? nil : selectedColors) { colors in
+                selectedColors = colors
             }
             .navigationTitle("Color Picker")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        print("dismiss")
-//                        dismiss()
+                        presentationMode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.gray)
@@ -36,6 +36,6 @@ struct ColorPickerView: View {
 
 struct ColorPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        ColorPickerView()
+        ColorPickerView(selectedColors: .constant([.red, .blue]))
     }
 }

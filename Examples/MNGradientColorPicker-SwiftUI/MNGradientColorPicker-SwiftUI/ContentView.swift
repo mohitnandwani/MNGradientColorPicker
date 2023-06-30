@@ -10,20 +10,22 @@ import MNGradientColorPicker
 
 struct ContentView: View {
     
-    @State
-    private var selectedColors: [Color] = [.red, .blue]
+    @State private var selectedColors: [Color] = [.red, .blue]
+    @State private var showingColorPicker = false
     
     var body: some View {
         VStack(spacing: 24) {
             Spacer()
             Text("MNGradientColorPicker")
                 .foregroundColor(.primary)
-                .bold()
-            LinearGradient(gradient: Gradient(colors: selectedColors), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .font(.headline)
+            LinearGradient(gradient: Gradient(colors: selectedColors), startPoint: .top, endPoint: .bottom)
                 .cornerRadius(16)
                 .padding(.horizontal, 16)
-            NavigationLink(destination: ColorPickerView()) {
-                Text("Show Gradient Color Picker")
+            Button("Show Gradient Color Picker") {
+                self.showingColorPicker = true
+            }.sheet(isPresented: $showingColorPicker) {
+                ColorPickerView(selectedColors: $selectedColors)
             }
             Spacer()
         }

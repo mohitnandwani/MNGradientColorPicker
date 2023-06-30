@@ -25,11 +25,17 @@ import UIKit
 import SwiftUI
 
 public struct MNGradientColorPickerView: UIViewControllerRepresentable {
+    public init(selectedColors: [Color]? = nil, onColorsSelection: @escaping ([Color]) -> Void) {
+        self.selectedColors = selectedColors
+        self.onColorsSelection = onColorsSelection
+    }
+    
     
     let mnGradientColorPickerController = MNGradientColorPickerController()
     
     public var selectedColors: [Color]?
     public var onColorsSelection: ([Color]) -> Void
+    
     
     public func makeUIViewController(context: Context) -> some UIViewController {
         return mnGradientColorPickerController

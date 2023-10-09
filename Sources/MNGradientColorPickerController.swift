@@ -340,7 +340,7 @@ public class MNGradientColorPickerController: UIViewController {
 //            CatalystAppManager.presentColorPicker(hex: isHex1Active ? hex1Button.color?.hexString ?? "" : hex2Button.color?.hexString ?? "")
 //        }
 //        #else
-        colorPickerView.setSelectedColor(with: isHex1Active ? hex1Button.color : hex2Button.color)
+        colorPickerView.selectColor(with: isHex1Active ? hex1Button.color! : hex2Button.color!)
 //        #endif
     }
     
@@ -372,7 +372,7 @@ public class MNGradientColorPickerController: UIViewController {
             hex2Button.color = color
         }
         previewView.backgroundLayer(with: [hex1Button.color!.cgColor, hex2Button.color!.cgColor])
-        colorPickerView.setSelectedColor(with: color)
+        colorPickerView.selectColor(with: color)
     }
     
     @objc
